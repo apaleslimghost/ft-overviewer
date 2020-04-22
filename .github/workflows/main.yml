@@ -16,6 +16,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      MINECRAFT_VERSION: 1.15.2
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
