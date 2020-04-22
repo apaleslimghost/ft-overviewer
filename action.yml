@@ -4,6 +4,9 @@ description: 'Download a world from Minecraft Realms'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    MINECRAFT_EMAIL: ${{ inputs.minecraftEmail }}
+    MINECRAFT_PASSWORD: ${{ inputs.minecraftPassword }}
 inputs:
   minecraftEmail:
     description: Email address to log in to Minecraft
@@ -11,6 +14,3 @@ inputs:
   minecraftPassword:
     description: Password to log in to Minecraft
     required: true
-args:
-  - ${{ inputs.minecraftEmail }}
-  - ${{ inputs.minecraftPassword }}
