@@ -1,7 +1,16 @@
 # action.yml
-name: 'Realms Overviewer'
-description: 'Download a world from Minecraft Realms and render it with Minecraft-Overviewer'
+name: 'Minecraft Realms download'
+description: 'Download a world from Minecraft Realms'
 runs:
   using: 'docker'
   image: 'Dockerfile'
- 
+inputs:
+  minecraftEmail:
+    description: Email address to log in to Minecraft
+    required: true
+  minecraftPassword:
+    description: Password to log in to Minecraft
+    required: true
+args:
+  - ${{ inputs.minecraftEmail }}
+  - ${{ inputs.minecraftPassword }}
