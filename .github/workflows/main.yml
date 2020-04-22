@@ -25,7 +25,11 @@ jobs:
         submodules: true
 
     - name: Download world from Minecraft Realms
-      run: echo WIP
+      uses: ./
+      id: realms-download
+      with:
+        minecraftEmail: ${{ secrets.minecraftEmail }}
+        minecraftPassword: ${{ secrets.minecraftPassword }}
     
     - name: Generate map from Minecraft world
       uses: docker://mide/minecraft-overviewer
