@@ -34,3 +34,8 @@ jobs:
     
     - name: Generate map from Minecraft world
       uses: docker://mide/minecraft-overviewer
+
+    - name: Deploy to  GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v1.4.0
+      with:
+        build_dir: /home/minecraft/render
