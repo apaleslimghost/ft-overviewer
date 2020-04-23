@@ -30,6 +30,7 @@ jobs:
       with:
         minecraftEmail: ${{ secrets.minecraftEmail }}
         minecraftPassword: ${{ secrets.minecraftPassword }}
+        slotNumber: 3
     
     - name: Generate map from Minecraft world
       uses: docker://mide/minecraft-overviewer
