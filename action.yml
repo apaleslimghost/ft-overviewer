@@ -7,6 +7,8 @@ runs:
   env:
     MINECRAFT_EMAIL: ${{ inputs.minecraftEmail }}
     MINECRAFT_PASSWORD: ${{ inputs.minecraftPassword }}
+  args:
+    - ${{ inputs.slotNumber }}
 inputs:
   minecraftEmail:
     description: Email address to log in to Minecraft
@@ -14,3 +16,6 @@ inputs:
   minecraftPassword:
     description: Password to log in to Minecraft
     required: true
+  slotNumber:
+    description: Realms world slot to download (1-4)
+    required: false
