@@ -7,8 +7,7 @@ runs:
   env:
     MINECRAFT_EMAIL: ${{ inputs.minecraftEmail }}
     MINECRAFT_PASSWORD: ${{ inputs.minecraftPassword }}
-  args:
-    - ${{ inputs.slotNumber }}
+    SLOT_NUMBER: ${{ inputs.slotNumber }}
 inputs:
   minecraftEmail:
     description: Email address to log in to Minecraft
