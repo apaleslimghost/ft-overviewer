@@ -1,0 +1,12 @@
+# action.yml
+name: 'Minecraft JAR download'
+description: 'Download the latest Minecraft JAR file'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    MINECRAFT_VERSION: ${{ inputs.minecraftVersion }}
+inputs:
+  minecraftVersion:
+    description: Minecraft version to download
+    required: false

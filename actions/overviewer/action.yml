@@ -1,0 +1,7 @@
+# action.yml
+name: 'Minecraft Overviewer render'
+description: 'Render a map with Minecraft Overviewer'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
