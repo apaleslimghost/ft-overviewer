@@ -52,4 +52,5 @@ fi
 
 echo "Extracting to $GITHUB_WORKSPACE"
 
-tar xvf -C $GITHUB_WORKSPACE world.tar.gz
+tar xvf world.tar.gz
+mv world $GITHUB_WORKSPACE
