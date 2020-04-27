@@ -50,7 +50,4 @@ if [ $? -ne 0 ];then
   exit 3
 fi
 
-echo "Extracting to $GITHUB_WORKSPACE"
-
 tar xvf world.tar.gz
-mv world $GITHUB_WORKSPACE
