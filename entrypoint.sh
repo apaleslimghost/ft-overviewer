@@ -18,7 +18,6 @@ id=$(echo ${response} | jq -r .selectedProfile.id)
 
 echo "Logged in as $name"
 
-output_file=world.tar.gz
 realms_server=https://mcoapi.minecraft.net
 version=1.11.2
 
@@ -40,12 +39,11 @@ if [ $? -ne 0 ];then
   exit 2
 fi
 url=$(echo ${response} | jq -r .downloadLink)
+echo "Downloading $url"
 
 # 3. download backup
-http --check-status --ignore-stdin --body --download --verify=no --output ${output_file} ${url}
+http --check-status --ignore-stdin --body --download --verify=no ${url} | tar xvf -C /home/minecraft/server
 if [ $? -ne 0 ];then
   echo "Error downloading, exit code: $?"
   exit 3
 fi
-
-tar xvf $output_file -C /home/minecraft/server
