@@ -44,7 +44,7 @@ url=$(echo ${response} | jq -r .downloadLink)
 echo "Downloading $url"
 
 # 3. download backup
-http --check-status --ignore-stdin --body --download --verify=no ${url} | tar xvf -C /home/minecraft/server
+http --check-status --ignore-stdin --body --download --verify=no ${url} | tar xvf -C /home/minecraft/server -
 if [ $? -ne 0 ];then
   echo "Error downloading, exit code: $?"
   exit 3
