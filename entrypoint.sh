@@ -24,6 +24,7 @@ version=1.11.2
 cookie_string="Cookie:sid=token:${access_token}:${id};user=${name};version=${version}"
 
 # 1. get world ID
+echo ${realms_server}/worlds
 response=$(http --check-status --ignore-stdin --verify=no GET ${realms_server}/worlds "${cookie_string}")
 if [ $? -ne 0 ];then
   echo "Error getting worlds, response: ${response}"
@@ -33,6 +34,7 @@ world_id=$(echo ${response} | jq .servers[0].id)
 echo "Downloading from world $world_id"
 
 # 2. get download link
+echo ${realms_server}/worlds/${world_id}/slot/${SLOT_NUMBER}/download
 response=$(http --check-status --ignore-stdin --verify=no GET ${realms_server}/worlds/${world_id}/slot/${SLOT_NUMBER}/download "${cookie_string}")
 if [ $? -ne 0 ];then
   echo "Error getting download link, response: ${response}"
