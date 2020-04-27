@@ -29,6 +29,10 @@ jobs:
         minecraftEmail: ${{ secrets.minecraftEmail }}
         minecraftPassword: ${{ secrets.minecraftPassword }}
         slotNumber: 3
+
+    
+    - name: Download Minecraft client.jar
+      uses: ./actions/textures
     
     - name: Generate map from Minecraft world
       uses: ./actions/overviewer
@@ -36,4 +40,4 @@ jobs:
     - name: Deploy to  GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.4.0
       with:
-        build_dir: /home/minecraft/render
+        build_dir: ${{ github.workspace }}/render
