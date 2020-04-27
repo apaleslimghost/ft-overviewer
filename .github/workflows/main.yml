@@ -29,7 +29,7 @@ jobs:
         submodules: true
 
     - name: Download world from Minecraft Realms
-      uses: ./
+      uses: ./actions/download
       id: realms-download
       with:
         minecraftEmail: ${{ secrets.minecraftEmail }}
