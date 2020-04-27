@@ -50,4 +50,4 @@ if [ $? -ne 0 ];then
   exit 3
 fi
 
-tar xvf -C /home/minecraft/server world.tar.gz
+tar xvf -C /workspace world.tar.gz
