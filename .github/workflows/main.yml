@@ -23,12 +23,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Download world from Apex FTP
-      run: echo lol
+      uses: ./actions/download
       id: apex-download
       with:
         ftpHost: 51.77.116.89
         ftpUser: quarterto.366291
         ftpPassword: ${{ secrets.ftpPassword }}
+        world: 'this-land'
 
     - name: Download Minecraft client.jar
       uses: ./actions/textures
@@ -36,7 +37,7 @@ jobs:
     - name: Generate map from Minecraft world
       uses: ./actions/overviewer
 
-    - name: Deploy to  GitHub Pages
+    - name: Deploy to GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.4.0
       with:
         build_dir: ${{ github.workspace }}/render
