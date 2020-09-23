@@ -16,21 +16,20 @@ jobs:
     runs-on: ubuntu-latest
     container: alpine/git
     env:
-      MINECRAFT_VERSION: 1.15.2
+      MINECRAFT_VERSION: 1.16.3
 
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
 
-    - name: Download world from Minecraft Realms
-      uses: ./actions/download
-      id: realms-download
+    - name: Download world from Apex FTP
+      run: echo lol
+      id: apex-download
       with:
-        minecraftEmail: ${{ secrets.minecraftEmail }}
-        minecraftPassword: ${{ secrets.minecraftPassword }}
-        slotNumber: 3
+        ftpHost: 51.77.116.89
+        ftpUser: quarterto.366291
+        ftpPassword: ${{ secrets.ftpPassword }}
 
-    
     - name: Download Minecraft client.jar
       uses: ./actions/textures
     
