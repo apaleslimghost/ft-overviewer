@@ -41,6 +41,7 @@ jobs:
         world: 'this-land'
         
   render:
+    needs: download
     runs-on: ubuntu-latest
     container: alpine/git
     env:
@@ -71,6 +72,7 @@ jobs:
       uses: ./actions/overviewer
 
   deploy:
+    needs: render
     runs-on: ubuntu-latest
     container: alpine/git
 
