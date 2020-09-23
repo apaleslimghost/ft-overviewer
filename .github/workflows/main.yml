@@ -30,7 +30,11 @@ jobs:
       uses: actions/cache@v2
       with:
         path: world
-        key: ${{ steps.date.outputs.formattedTime }}
+        key: ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-${{ steps.date.outputs.day }}-${{ steps.date.outputs.hour }}
+        restore-keys: |
+          ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-${{ steps.date.outputs.day }}-
+          ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-
+          ${{ steps.date.outputs.year }}-
 
     - name: Download world from Apex FTP
       uses: ./actions/download
@@ -54,8 +58,6 @@ jobs:
     - name: Get current time
       uses: 1466587594/get-current-time@v2
       id: date
-      with:
-        format: YYYYMMDD
     
     - name: Restore world cache and cache render
       uses: actions/cache@v2
@@ -63,7 +65,11 @@ jobs:
         path: |
           world
           render
-        key: ${{ steps.date.outputs.formattedTime }}
+        key: ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-${{ steps.date.outputs.day }}-${{ steps.date.outputs.hour }}
+        restore-keys: |
+          ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-${{ steps.date.outputs.day }}-
+          ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-
+          ${{ steps.date.outputs.year }}-
 
     - name: Download Minecraft client.jar
       uses: ./actions/textures
@@ -87,7 +93,11 @@ jobs:
       uses: actions/cache@v2
       with:
         path: render
-        key: ${{ steps.date.outputs.formattedTime }}
+        key: ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-${{ steps.date.outputs.day }}-${{ steps.date.outputs.hour }}
+        restore-keys: |
+          ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-${{ steps.date.outputs.day }}-
+          ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-
+          ${{ steps.date.outputs.year }}-
 
     - name: Deploy to GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.4.0
