@@ -12,7 +12,35 @@ on:
 
 
 jobs:
-  build:
+  download:
+    runs-on: ubuntu-latest
+    container: alpine/git
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+      
+    - name: Get current time
+      uses: 1466587594/get-current-time@v2
+      id: date
+      with:
+        format: YYYYMMDD
+    
+    - name: Cache world download
+      uses: actions/cache@v2
+      with:
+        path: world
+        key: ${{ steps.date.outputs.formattedTime }}
+
+    - name: Download world from Apex FTP
+      uses: ./actions/download
+      with:
+        ftpHost: 51.77.116.89
+        ftpUser: quarterto.366291
+        ftpPass: ${{ secrets.FTP_PASSWORD }}
+        world: 'this-land'
+        
+  render:
     runs-on: ubuntu-latest
     container: alpine/git
     env:
@@ -22,20 +50,42 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v2
 
-    - name: Download world from Apex FTP
-      uses: ./actions/download
-      id: apex-download
+    - name: Get current time
+      uses: 1466587594/get-current-time@v2
+      id: date
       with:
-        ftpHost: 51.77.116.89
-        ftpUser: quarterto.366291
-        ftpPass: ${{ secrets.FTP_PASSWORD }}
-        world: 'this-land'
+        format: YYYYMMDD
+    
+    - name: Restore world cache and cache render
+      uses: actions/cache@v2
+      with:
+        path: |
+          world
+          render
+        key: ${{ steps.date.outputs.formattedTime }}
 
     - name: Download Minecraft client.jar
       uses: ./actions/textures
     
     - name: Generate map from Minecraft world
       uses: ./actions/overviewer
+
+  deploy:
+    runs-on: ubuntu-latest
+    container: alpine/git
+
+    steps:
+    - name: Get current time
+      uses: 1466587594/get-current-time@v2
+      id: date
+      with:
+        format: YYYYMMDD
+
+    - name: Restore render cache
+      uses: actions/cache@v2
+      with:
+        path: render
+        key: ${{ steps.date.outputs.formattedTime }}
 
     - name: Deploy to GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.4.0
