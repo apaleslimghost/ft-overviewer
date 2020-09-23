@@ -1,20 +1,25 @@
 # action.yml
-name: 'Minecraft Realms download'
-description: 'Download a world from Minecraft Realms'
+name: 'Apex FTP download'
+description: 'Download a world from Apex'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'ubuntu:18.04'
   env:
-    MINECRAFT_EMAIL: ${{ inputs.minecraftEmail }}
-    MINECRAFT_PASSWORD: ${{ inputs.minecraftPassword }}
-    SLOT_NUMBER: ${{ inputs.slotNumber }}
+    FTP_HOST: ${{ inputs.ftpHost }}
+    FTP_USER: ${{ inputs.ftpUser }}
+    FTP_PASS: ${{ inputs.ftpPass }}
+    WORLD: ${{ inputs.world }}
 inputs:
-  minecraftEmail:
-    description: Email address to log in to Minecraft
+  ftpHost:
+    description: Host to download from
     required: true
-  minecraftPassword:
-    description: Password to log in to Minecraft
+  ftpUser:
+    description: FTP username
     required: true
-  slotNumber:
-    description: Realms world slot to download (1-4)
+  ftpPass:
+    description: FTP password
+    required: true
+  world:
+    description: World folder to download
     required: false
+    default: 'world'
