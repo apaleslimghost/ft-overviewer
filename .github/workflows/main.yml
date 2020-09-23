@@ -14,7 +14,6 @@ on:
 jobs:
   download:
     runs-on: ubuntu-latest
-    container: alpine/git
 
     steps:
     - name: Check out repository
@@ -47,7 +46,6 @@ jobs:
   render:
     needs: download
     runs-on: ubuntu-latest
-    container: alpine/git
     env:
       MINECRAFT_VERSION: 1.16.3
 
@@ -80,7 +78,6 @@ jobs:
   deploy:
     needs: render
     runs-on: ubuntu-latest
-    container: alpine/git
 
     steps:
     - name: Get current time
