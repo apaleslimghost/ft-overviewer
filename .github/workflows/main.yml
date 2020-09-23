@@ -28,7 +28,7 @@ jobs:
       with:
         ftpHost: 51.77.116.89
         ftpUser: quarterto.366291
-        ftpPassword: ${{ secrets.ftpPassword }}
+        ftpPass: ${{ secrets.ftpPassword }}
         world: 'this-land'
 
     - name: Download Minecraft client.jar
