@@ -1,3 +1,5 @@
 #!/bin/bash
 
-lftp  -u"$FTP_USER,$FTP_PASS" "$FTP_HOST" -c "mirror --delete --only-newer $WORLD world"
+wget -m --user="$FTP_USER" --password="$FTP_PASS" "ftp://$FTP_HOST/$WORLD"
+
+mv "$FTP_HOST/$WORLD" world
