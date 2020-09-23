@@ -12,7 +12,7 @@ markers = [
 ]
 
 renders["day"] = {
-    'world': 'minecraft',
+    'world': 'This Land',
     'title': 'Day',
     'rendermode': 'smooth_lighting',
     "dimension": "overworld",
@@ -20,18 +20,10 @@ renders["day"] = {
 }
 
 renders["night"] = {
-    'world': 'minecraft',
+    'world': 'This Land',
     'title': 'Night',
     'rendermode': 'smooth_night',
     "dimension": "overworld",
-    'markers': markers
-}
-
-renders["nether"] = {
-    "world": "minecraft",
-    "title": "Nether",
-    "rendermode": 'nether_smooth_lighting',
-    "dimension": "nether",
     'markers': markers
 }
 
