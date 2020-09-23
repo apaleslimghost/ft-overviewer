@@ -3,7 +3,7 @@ name: 'Apex FTP download'
 description: 'Download a world from Apex'
 runs:
   using: 'docker'
-  image: 'ubuntu:18.04'
+  image: 'Dockerfile'
   env:
     FTP_HOST: ${{ inputs.ftpHost }}
     FTP_USER: ${{ inputs.ftpUser }}
